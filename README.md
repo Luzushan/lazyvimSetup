@@ -1,0 +1,2 @@
+# lazyvimSetup
+Set up lazyVim 
