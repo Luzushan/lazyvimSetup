@@ -1,5 +1,5 @@
 return {
-  { "rebelot/kanagawa.nvim", name = kanagawa },
+  { "rebelot/kanagawa.nvim", name = "kanagawa" },
   { "craftzdog/solarized-osaka.nvim", name = "solarized-osaka" },
   { "catppuccin/nvim", name = "catppuccin", lazy = false },
   { "rose-pine/neovim", name = "rose-pine" },
