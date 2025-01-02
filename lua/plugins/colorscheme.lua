@@ -12,4 +12,11 @@ return {
       transparent = true,
     }
   end,
+
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "rose-pine",
+    },
+  },
 }
