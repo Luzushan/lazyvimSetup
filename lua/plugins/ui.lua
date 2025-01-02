@@ -71,7 +71,10 @@ return {
   -- buffer line
   {
     "akinsho/bufferline.nvim",
-    event = "VeryLazy",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    -- event = "VeryLazy",
     keys = {
       { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
       { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
@@ -79,9 +82,14 @@ return {
     opts = {
       options = {
         mode = "tabs",
-        -- separator_style = "slant",
+        separator_style = "padded_slope",
         show_buffer_close_icons = false,
         show_close_icon = false,
+        hover = {
+          enabled = true,
+          delay = 200,
+          reveal = { "close" },
+        },
       },
     },
   },
@@ -136,7 +144,7 @@ return {
       }
     end,
   },
-
+  -- ZenMode
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
@@ -150,6 +158,7 @@ return {
     keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
   },
 
+  -- Configuring the snacks
   {
     "folke/snacks.nvim",
     opts = {
@@ -168,5 +177,15 @@ return {
         },
       },
     },
+  },
+
+  -- Indentation Highlighting
+  {
+    "lukas-reineke/indent-blankline.nvim",
+  },
+
+  -- Rainbow Highlighting
+  {
+    "HiPhish/nvim-ts-rainbow2",
   },
 }
