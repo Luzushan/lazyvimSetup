@@ -1,14 +1,17 @@
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
+    "nvim-neotest/nvim-nio",
     "rcarriga/nvim-dap-ui",
   },
+
   config = function()
     local dap = require("dap")
 
     local dapui = require("dapui")
 
-    --[[ Create dapui interface ]]
+    require("dapui").setup()
+
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
     end
@@ -22,18 +25,35 @@ return {
       dapui.close()
     end
 
-    -- Set up the debugger for C/C++/Rust
-    dap.adapters.gdb = {
+    dap.adapters.lldb = {
       type = "executable",
-      command = "gdb",
-      args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
+      command = "/usr/bin/lldb-vscode", -- adjust as needed, must be absolute path
+      name = "lldb",
     }
 
-    dap.adapters.codelldb = {
-      type = "executable",
-      eommand = "codelldb", -- or if not in $PATH: "/absolute/path/to/codelldb"
-      -- On windows you may have to uncomment this:
-      -- detached = false,
+    dap.configurations.cpp = {
+      {
+        name = "Launch file",
+        type = "cppdbg",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopAtEntry = true,
+      },
+      {
+        name = "Attach to gdbserver :1234",
+        type = "cppdbg",
+        request = "launch",
+        MIMode = "gdb",
+        miDebuggerServerAddress = "localhost:1234",
+        miDebuggerPath = "/usr/bin/gdb",
+        cwd = "${workspaceFolder}",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+      },
     }
 
     -- Create a debugger keymap using dap mark d

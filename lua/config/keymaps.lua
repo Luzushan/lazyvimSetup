@@ -7,6 +7,7 @@ discipline.cowboy()
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
+--local utils = require("utils")
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')
 keymap.set("n", "<Leader>p", '"0p')
@@ -57,6 +58,10 @@ keymap.set("n", "<C-w><up>", "C-w>+")
 keymap.set("n", "<C-w><down>", "C-w>-")
 
 -- Diagnostics
-keymap.set("n", "<C-j>", function()
+keymap.set("n", "<C-q>", function()
   vim.diagnostic.goto_next()
 end, opts)
+
+-- Bufferline navigation
+keymap.set("n", [[<leader>bl]], ":BufferLinePick<CR>")
+--

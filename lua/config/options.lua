@@ -5,3 +5,11 @@
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- set autodirectory to the current working folder
+vim.opt.autochdir = true
+
+-- set tab options in nvim file
+vim.opt.tabstop = 4
+vim.opt.signcolumn = "auto"
+vim.opt.shiftwidth = 4

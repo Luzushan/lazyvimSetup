@@ -188,4 +188,17 @@ return {
   {
     "HiPhish/nvim-ts-rainbow2",
   },
+
+  -- disable snacks
+  { "folke/flash.nvim", enabled = false },
+  -- animation
+  {
+    "echasnovski/mini.animate",
+    event = "VeryLazy",
+    opts = function(_, opts)
+      opts.scroll = {
+        enable = false,
+      }
+    end,
+  },
 }
