@@ -181,6 +181,7 @@ return {
 
   -- Indentation Highlighting
   {
+
     "lukas-reineke/indent-blankline.nvim",
   },
 
